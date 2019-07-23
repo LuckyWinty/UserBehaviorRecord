@@ -6,7 +6,7 @@ const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 
-const router = require('./router');
+const router = require('./routes/index');
 
 // error handler
 onerror(app)

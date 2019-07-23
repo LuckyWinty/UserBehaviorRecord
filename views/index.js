@@ -1,9 +1,7 @@
-const axios = require('axios');
-console.log('------1');
-axios.get('http://localhost:3333/user/behavior?ID=12345')
+axios.get('/user/behavior?ID=12345')
   .then(function (response) {
     // handle success
-    console.log('------2',response.data);
+    console.log(response);
   })
   .catch(function (error) {
     // handle error
