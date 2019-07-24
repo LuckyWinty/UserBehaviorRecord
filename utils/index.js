@@ -1,19 +1,25 @@
 const fs = require("fs");
+const path = require('path')
 
 /**
  * 获取客户端ip
  * @param {request} req
  */
-export const getClientIp = (req) => {
+const getClientIp = (req) => {
     return req.headers['x-forwarded-for'] ||
-        req.connection.remoteAddress ||
-        req.socket.remoteAddress ||
-        req.connection.socket.remoteAddress;
+        req.socket.remoteAddress || null
 };
 
-export const writeFile = (fileName,data)=>{
-    fs.writeFile(fileName, data, (err) => {
-        if (err) throw err;
-        console.log(`${fileName} has been saved!`);
-    });
+const writeFile = (fileName,data)=>{
+    const directoryPath = path.resolve(process.cwd(),'dataFile')
+    if (!fs.existsSync(directoryPath)) {
+      fs.mkdirSync(directoryPath)
+    }
+    const filePath =  path.resolve(process.cwd(), fileName)
+    fs.writeFileSync(filePath, `${data}\n`)
+}
+
+module.exports = {
+    getClientIp,
+    writeFile
 }

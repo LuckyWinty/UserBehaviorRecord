@@ -33,15 +33,20 @@ const query = (sql, values)=>{
     })
 }
 const add = (params = ['', '', '', '', '', '', ''], table) => {
-    var addSql = `INSERT INTO ${table}(Id,username,ip,date,dataFile,msg) VALUES(0,?,?,?,?,?)`;
-    const p = new Promise(function (res, rej) {
-      connection.query(addSql, params, function (err, result) {
-        if (err) {
-          rej(err.message);
-        } else {
-          res(result);
-        };
-      });
+    var addSql = `INSERT INTO ${table}(id,username,ip,date,dataFile,msg) VALUES(0,?,?,?,?,?)`;
+    const p = new Promise(function (resolve, reject) {
+        pool.getConnection((err, connection)=>{
+            console.log('connect...',err)
+            if(err) return reject(err)
+            connection.query(addSql, params, function (err, result) {
+                console.log('----add finished-----',err,result)
+                if (err) {
+                    reject(err.message);
+                } else {
+                    resolve(result);
+                };
+            });
+        })
     });
     return p;
 }
