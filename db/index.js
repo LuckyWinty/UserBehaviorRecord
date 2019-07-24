@@ -3,13 +3,8 @@ const mysql = require('mysql')
 const config = {
     host     : 'localhost',
     user     : 'root',
-    password : '!winty230',
+    password : 'password',
     database : 'UserBehaviorRecord',
-    port:3333,
-    connectionLimit : 1000,
-    connectTimeout  : 6000,
-    acquireTimeout  : 6000,
-    timeout         : 6000,
     multipleStatements: true//允许多条sql同时执行
 };
 const pool = mysql.createPool(config)
@@ -18,18 +13,40 @@ const query = (sql, values)=>{
     console.log('start to query')
     return new Promise((resolve, reject)=>{
         pool.getConnection((err, connection)=>{
-            console.log('connect...',err,connection)
+            console.log('connect...',err)
             if(err) return reject(err)
             connection.query(sql,values,(err, results, fields)=>{
                 console.log('query result...',err,results)
-                connection.release();
                 if(err) return reject(err)
                 resolve(results)
-                connection.end()
+                connection.end(function(err) {
+                    // The connection is terminated now
+                    if(err){
+                        console.log(err);
+                    }else {
+                        console.log('end');
+                    }
+    
+                });
             })
         })
     })
 }
+const add = (params = ['', '', '', '', '', '', ''], table) => {
+    var addSql = `INSERT INTO ${table}(Id,username,ip,date,dataFile,msg) VALUES(0,?,?,?,?,?)`;
+    const p = new Promise(function (res, rej) {
+      connection.query(addSql, params, function (err, result) {
+        if (err) {
+          rej(err.message);
+        } else {
+          res(result);
+        };
+      });
+    });
+    return p;
+}
+
 module.exports = {
-    query
+    query,
+    add
 }
