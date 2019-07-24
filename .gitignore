@@ -1,1 +1,26 @@
 node_modules
+
+
+# dependencies
+record-repo/node_modules
+record-repo/.pnp
+record-repo/.pnp.js
+
+# testing
+record-repo//coverage
+
+# production
+record-repo//build
+
+# misc
+record-repo/.DS_Store
+record-repo/.env.local
+record-repo/.env.development.local
+record-repo/.env.test.local
+.record-repo/env.production.local
+
+record-repo/npm-debug.log*
+record-repo/yarn-debug.log*
+record-repo/yarn-error.log*
+
+dataFile
