@@ -5,7 +5,7 @@ const utils =  require('../utils/index')
 router.get('/user/getBehavior', async (ctx, next) => {
   console.log('entry user----------------',ctx.req.body)
   let uid = 'test';
-  let sql = 'SELECT * FROM t_behavior WHERE id=1', value = [uid];
+  let sql = 'SELECT * FROM t_behavior', value = [uid];
   await db.query(sql, value).then(res => {
       if (res && res.length > 0) {
           ctx.body = { recode:0, data: res[0] };

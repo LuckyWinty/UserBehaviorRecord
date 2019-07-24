@@ -1,14 +1,23 @@
-import React from 'react';
-import './App.css';
-import WrappedDemo from './component/FromTest'
-import './record'
-function App() {
+import React from 'react'
+import AppRouter from './AppRouter'
+import { createBrowserHistory } from 'history'
+import { Router, withRouter } from 'react-router-dom'
+
+const history = createBrowserHistory()
+
+let App = () => {
   return (
-    <div className="App">
-      <h3>要开始测试啦～</h3>
-      <WrappedDemo></WrappedDemo>
-    </div>
+    <AppRouter />
+  )
+}
+App = withRouter(App)
+
+const AppContainer=()=> {
+  return (
+    <Router history={history}>
+      <App />
+    </Router>
   );
 }
 
-export default App;
+export default AppContainer;

@@ -5,10 +5,13 @@
   "dependencies": {
     "antd": "^3.20.5",
     "axios": "^0.19.0",
+    "history": "^4.9.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
-    "rrweb": "^0.7.18"
+    "rrweb": "^0.7.18",
+    "rrweb-player": "^0.3.14"
   },
   "scripts": {
     "start": "react-scripts start",
