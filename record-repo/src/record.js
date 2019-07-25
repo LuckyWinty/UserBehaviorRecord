@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import axios from 'axios'
 import WrappedDemo from './component/FromTest'
+import { Card, Col, Row } from 'antd';
 const rrweb = require('rrweb')
 
 const Record = ()=>{
@@ -27,12 +28,16 @@ const Record = ()=>{
           })
         }
         
-        // 每 5 秒调用一次 save 方法，避免请求过多
-        setInterval(save, 5 * 1000);
-        // setTimeout(save, 10 * 1000)
+        // 每 10 秒调用一次 save 方法，避免请求过多
+        // setInterval(save, 10 * 1000);
+        window.onerror = function (msg, url, lineNo, columnNo, error) {
+          //进入一次上报一次先
+          save()
+          return false;
+        };
     }
     useEffect(()=>{
-      // userRecord()
+      userRecord()
     },[])
     return (
     <div style={{
@@ -41,6 +46,25 @@ const Record = ()=>{
     }}>
       <h3>First Test!</h3>
       <WrappedDemo />
+      <div style={{ background: '#ECECEC', padding: '30px' ,margin:'20px auto'}}>
+        <Row gutter={16}>
+          <Col span={8}>
+            <Card title="Card title" bordered={false}>
+              Card content
+            </Card>
+          </Col>
+          <Col span={8}>
+            <Card title="Card title" bordered={false}>
+              Card content
+            </Card>
+          </Col>
+          <Col span={8}>
+            <Card title="Card title" bordered={false}>
+              Card content
+            </Card>
+          </Col>
+        </Row>
+      </div>
     </div>)
 }
 export default Record
