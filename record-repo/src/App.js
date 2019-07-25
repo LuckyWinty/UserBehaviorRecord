@@ -3,7 +3,7 @@ import AppRouter from './AppRouter'
 import { createBrowserHistory } from 'history'
 import { Router, withRouter } from 'react-router-dom'
 
-const history = createBrowserHistory()
+const repohistory = createBrowserHistory()
 
 let App = () => {
   return (
@@ -14,7 +14,7 @@ App = withRouter(App)
 
 const AppContainer=()=> {
   return (
-    <Router history={history}>
+    <Router history={repohistory}>
       <App />
     </Router>
   );

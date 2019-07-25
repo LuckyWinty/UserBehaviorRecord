@@ -27,8 +27,8 @@ const Record = ()=>{
           })
         }
         
-        // 每 10 秒调用一次 save 方法，避免请求过多
-        setInterval(save, 10 * 1000);
+        // 每 5 秒调用一次 save 方法，避免请求过多
+        setInterval(save, 5 * 1000);
         // setTimeout(save, 10 * 1000)
     }
     useEffect(()=>{

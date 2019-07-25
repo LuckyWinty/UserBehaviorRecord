@@ -9214,12 +9214,19 @@ rmc-feedback@^2.0.0:
     babel-runtime "6.x"
     classnames "^2.2.5"
 
+rrweb-player@^0.3.14:
+  version "0.3.14"
+  resolved "https://npm.garenanow.com/rrweb-player/-/rrweb-player-0.3.14.tgz#a0bdb58e0861a317fb439b4bf2e20dd5794e71cc"
+  integrity sha512-vg4ZbAzYkNR+kF9Q6jysON1tYbyyjjiSSO5+JKaX4ZCz1tBxL4VuTeTGIWFdmUNlf4vQ0zY1BbAVRx49x9SC8Q==
+  dependencies:
+    rrweb "^0.7.17"
+
 rrweb-snapshot@^0.7.12:
   version "0.7.12"
   resolved "https://npm.garenanow.com/rrweb-snapshot/-/rrweb-snapshot-0.7.12.tgz#c0f65c1d2213290f885874f25d42444c2a06770c"
   integrity sha512-+Bai8uN5ln9jN9EpmKR4CbBPKpWPER+YEPIXyZh8ECoPLJgn94LNZvA9pF5DKGlLoGxT1pdjKfV1dLpr+ioUqg==
 
-rrweb@^0.7.18:
+rrweb@^0.7.17, rrweb@^0.7.18:
   version "0.7.18"
   resolved "https://npm.garenanow.com/rrweb/-/rrweb-0.7.18.tgz#696b86a20d9f8e58729b27f27ab4f0f839b80a6e"
   integrity sha512-kH1Cit+1jvbriC8WRuphgDhsYuKO+mexbmZUFEBj6LvOXct6+1cW9pyRyGkfwx9OBvuzosTbrQd3QVGGUZnBnQ==
