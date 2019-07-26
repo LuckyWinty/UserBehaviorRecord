@@ -1,9 +1,11 @@
-import React from 'react'
+import React,{ useState } from 'react'
 import axios from 'axios'
-import { Button } from 'antd';
 import rrwebPlayer from 'rrweb-player'
-
+import moment from 'moment'
+import { Form, Icon, Input, Button ,DatePicker} from 'antd';
 const Replay = ()=>{
+    const [searchParams, setSearchParams] = useState({})
+
     const handlePlay = async ()=>{
         const result =  await axios.get('http://localhost:3333/user/getBehavior')
         const data = result.data
@@ -21,11 +23,33 @@ const Replay = ()=>{
             });
         }
     }
+    const setParams = (key,value)=>{
+        const temp = {...searchParams}
+        temp[key] = value
+        setSearchParams(temp)
+    }
     return (
         <>
-            <div style={{width:'500px',margin:'50px auto'}}>
-                <Button type="primary" onClick={handlePlay}>回放</Button>
-            </div>
+            <Form layout="inline" onSubmit={handlePlay} style={{ width: '1000px',margin:'100px auto' }}>
+                <Form.Item label="username">
+                    <Input
+                        prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                        placeholder="Username"
+                        onChange={(e)=>{
+                            setParams('username',e.target.value)
+                        }}
+                    />
+                </Form.Item>
+                <Form.Item label="time">
+                    <DatePicker
+                        format="YYYY-MM-DD HH:mm:ss"
+                        showTime={{ defaultValue: moment('00:00:00', 'HH:mm:ss') }}
+                    />
+                </Form.Item>
+                <Form.Item>
+                    <Button type="primary" onClick={handlePlay}>回放</Button>
+                </Form.Item>
+            </Form>
             <div id={'replayer'} style={{
                 height: '600px',
                 width: '1200px',

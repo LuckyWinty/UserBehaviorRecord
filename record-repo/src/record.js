@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import axios from 'axios'
 import WrappedDemo from './component/FromTest'
+import Menu from './component/Menu'
 import { Card, Col, Row } from 'antd';
 const rrweb = require('rrweb')
 
@@ -46,6 +47,9 @@ const Record = ()=>{
     }}>
       <h3>First Test!</h3>
       <WrappedDemo />
+      <div style={{ margin:'20px auto'}}>
+      <Menu/>
+      </div>
       <div style={{ background: '#ECECEC', padding: '30px' ,margin:'20px auto'}}>
         <Row gutter={16}>
           <Col span={8}>
