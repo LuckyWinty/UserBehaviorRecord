@@ -7,7 +7,8 @@ const Replay = ()=>{
     const [searchParams, setSearchParams] = useState({})
 
     const handlePlay = async ()=>{
-        const result =  await axios.get('http://localhost:3333/user/getBehavior')
+        console.log('params,',searchParams)
+        const result =  await axios.get('http://localhost:3333/user/getBehavior',{params:searchParams})
         const data = result.data
         // if(!data.recode)return
         const events = data.events

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import axios from 'axios'
 import WrappedDemo from './component/FromTest'
 import Menu from './component/Menu'
-import { Card, Col, Row } from 'antd';
+import { Card, Col, Row, Button } from 'antd';
 const rrweb = require('rrweb')
 
 const Record = ()=>{
@@ -69,6 +69,9 @@ const Record = ()=>{
           </Col>
         </Row>
       </div>
+      <Button onClick={()=>{
+        throw {msg:'error'};
+      }}>click me will throw error</Button>
     </div>)
 }
 export default Record

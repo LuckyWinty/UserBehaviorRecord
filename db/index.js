@@ -10,16 +10,14 @@ const config = {
 const pool = mysql.createPool(config)
 
 const query = (sql, values)=>{
-    console.log('start to query')
     return new Promise((resolve, reject)=>{
         pool.getConnection((err, connection)=>{
             console.log('connect...',err)
             if(err) return reject(err)
             connection.query(sql,values,(err, results, fields)=>{
-                console.log('query result...',err,results)
                 if(err) return reject(err)
                 resolve(results)
-                connection.end(function(err) {
+                connection.release(function(err) {
                     // The connection is terminated now
                     if(err){
                         console.log(err);

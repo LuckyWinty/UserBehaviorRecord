@@ -19,13 +19,11 @@ const writeFile = (fileName,data)=>{
     fs.writeFileSync(filePath, `${data}\n`)
 }
 const readFile = (fileName)=>{
-    console.log('__dirname+fileName',`${process.cwd()}/${fileName}`);
     return new Promise((resolve,reject)=>{
         fs.readFile(`${process.cwd()}/${fileName}`, {flag: 'r+', encoding: 'utf8'}, function (err, data) {
             if(err) {
                 reject(err);
             }
-            console.log('----finished read')
             resolve(data)
         });
     })
