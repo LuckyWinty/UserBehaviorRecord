@@ -20,7 +20,6 @@ router.param('user', (id, ctx, next) => {
           return Promise.all(readfile).then((events)=>{
             ctx.body = { recode:0, data: res,events:events };
           })
-          // ctx.body = { recode:0, data: res };
       } else {
           ctx.body = {recode:-1,msg:'result error'};
       }
