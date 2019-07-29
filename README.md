@@ -1,6 +1,9 @@
 # UserBehaviorRecord
 A Repo To Test Recording User Behavior
 
+# view
+![GitHub](https://github.com/LuckyWinty/UserBehaviorRecord/blob/master/demo.gif)
+
 # start
 1. create database
 
@@ -33,5 +36,5 @@ You can use this SQL to create a table at local dataBase
 3. create test repo
 
     cd record-repo
-    
+
     npm start
