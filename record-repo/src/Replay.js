@@ -10,7 +10,7 @@ const Replay = ()=>{
         console.log('params,',searchParams)
         const result =  await axios.get('http://localhost:3333/user/getBehavior',{params:searchParams})
         const data = result.data
-        // if(!data.recode)return
+        if(data.recode === -1)return
         const events = data.events
         console.log('events---',events)
         for(let i =0;i < events.length;i++){
@@ -45,6 +45,9 @@ const Replay = ()=>{
                     <DatePicker
                         format="YYYY-MM-DD HH:mm:ss"
                         showTime={{ defaultValue: moment('00:00:00', 'HH:mm:ss') }}
+                        onChange={(date,string)=>{
+                            setParams('date',string)
+                        }}
                     />
                 </Form.Item>
                 <Form.Item>

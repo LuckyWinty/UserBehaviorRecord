@@ -2,22 +2,21 @@ const router = require('koa-router')();
 const db = require('../db');
 const utils =  require('../utils/index')
 
-router.param('user', (id, ctx, next) => {
-  console.log('ctx.request.body',ctx.user)
-  // ctx.user = users[id];
-  // if (!ctx.user) return ctx.status = 404;
-  return next();
-}).get('/user/getBehavior', async (ctx, next) => {
+router.get('/user/getBehavior', async (ctx, next) => {
+  console.log(ctx.query)
   let uid = 'test';
-  let sql = 'SELECT * FROM t_behavior', value = [uid];
-  console.log('ctx.request.body',ctx.user)
-  await db.query(sql, value).then(res => {
+  let date = ctx.query.date || new Date()
+  let sql = `select * from t_behavior where date>="${date}" order by date limit 5`;
+ 
+  await db.query(sql, uid).then(res => {
     const readfile = [];
+    console.log('result',res)
       if (res && res.length > 0) {
-          for(let i = 0;i <res.length;i++){
+          for(let i = 0;i < res.length;i++){
             readfile.push(utils.readFile(res[i].dataFile))
           }
           return Promise.all(readfile).then((events)=>{
+            console.log('ctx.request.body result',res)
             ctx.body = { recode:0, data: res,events:events };
           })
       } else {

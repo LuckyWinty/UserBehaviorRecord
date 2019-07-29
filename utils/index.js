@@ -21,6 +21,7 @@ const writeFile = (fileName,data)=>{
 const readFile = (fileName)=>{
     return new Promise((resolve,reject)=>{
         fs.readFile(`${process.cwd()}/${fileName}`, {flag: 'r+', encoding: 'utf8'}, function (err, data) {
+            console.log('---read error',err)
             if(err) {
                 reject(err);
             }

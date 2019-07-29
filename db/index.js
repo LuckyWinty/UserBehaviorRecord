@@ -15,6 +15,7 @@ const query = (sql, values)=>{
             console.log('connect...',err)
             if(err) return reject(err)
             connection.query(sql,values,(err, results, fields)=>{
+                console.log('query values...',err,results)
                 if(err) return reject(err)
                 resolve(results)
                 connection.release(function(err) {
